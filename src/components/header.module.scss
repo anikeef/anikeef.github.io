@@ -1,0 +1,23 @@
+@import "../styles/variables.scss";
+
+.header {
+  background-color: $grey;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__links {
+    list-style-type: none;
+    font-weight: 700;
+  }
+
+  &__link {
+    display: inline-block;
+  }
+}
