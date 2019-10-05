@@ -1,4 +1,4 @@
-@import "../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .header {
   background-color: $grey;
@@ -12,12 +12,17 @@
     font-size: 18px;
   }
 
-  &__links {
+  &__nav {
     list-style-type: none;
     font-weight: 700;
   }
 
-  &__link {
+  &__navItem {
     display: inline-block;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: white;
   }
 }

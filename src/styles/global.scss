@@ -6,9 +6,6 @@
 body {
   font-family: Raleway;
   font-size: 14px;
-}
-
-a {
-  text-decoration: none;
-  color: white;
+  line-height: 160%;
+  -webkit-font-smoothing: subpixel-antialiased;
 }

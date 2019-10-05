@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '../components/header';
-import '../styles/typography.css';
-import '../styles/global.scss';
+import Layout from '../components/layout/Layout';
 
 const Index = () => {
   return (
-    <>
-      <Header />
-    </>
+    <Layout>
+      <div>
+        Home
+      </div>
+    </Layout>
   );
 }
 

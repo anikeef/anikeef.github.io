@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.pageHeader {
+  padding: 35px;
+  background: linear-gradient(90deg, $blue, $purple);
+  color: white;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    max-width: 720px;
+  }
+}
