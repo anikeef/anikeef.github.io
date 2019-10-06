@@ -4,6 +4,12 @@ import PageHeader from '../components/page-header/PageHeader';
 import Project from '../components/project/Project';
 import { graphql } from 'gatsby';
 
+const extractImgData = (mode, name, data) => {
+  return data.allFile.nodes.find((node) => {
+    return node.childImageSharp[mode].originalName === name;
+  }).childImageSharp[mode];
+}
+
 const Portfolio = ({ data }) => {
   return (
     <Layout>
@@ -15,14 +21,16 @@ const Portfolio = ({ data }) => {
       </PageHeader>
       { 
         data.allMarkdownRemark.nodes.map((node) => {
-          const imgFluid = data.allFile.edges.find((edge) => {
-            return edge.node.childImageSharp.fluid.originalName === node.frontmatter.screenshot;
-          }).node.childImageSharp.fluid;
-          const logosFixed = data.allFile.edges.find((edge) => {
-            return edge.node.childImageSharp.fixed.originalName === node.frontmatter.logos;
-          }).node.childImageSharp.fixed;
+          const imgFluid = extractImgData('fluid', node.frontmatter.screenshot, data);
+          const logosFixed = extractImgData('fixed', node.frontmatter.logos, data);
           return (
-            <Project key={ node.id } title={ node.frontmatter.title } screenshot={ imgFluid } logos={ logosFixed }>
+            <Project 
+            key={ node.frontmatter.id } 
+            title={ node.frontmatter.title } 
+            screenshot={ imgFluid } 
+            logos={ logosFixed }
+            siteLink={ node.frontmatter.siteLink }
+            repoLink={ node.frontmatter.repoLink }>
               { node.rawMarkdownBody }
             </Project>
           );
@@ -36,31 +44,30 @@ export default Portfolio;
 
 export const query = graphql`
   query MyQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: frontmatter___id}) {
       nodes {
-        id
         frontmatter {
-          title
-          screenshot
+          id
           logos
           repoLink
+          screenshot
           siteLink
+          title
         }
         rawMarkdownBody
       }
     }
+
     allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-      edges {
-        node {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              originalName
-              ...GatsbyImageSharpFluid
-            }
-            fixed(height: 35) {
-              originalName
-              ...GatsbyImageSharpFixed
-            }
+      nodes {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            originalName
+            ...GatsbyImageSharpFluid
+          }
+          fixed(height: 35) {
+            originalName
+            ...GatsbyImageSharpFixed
           }
         }
       }

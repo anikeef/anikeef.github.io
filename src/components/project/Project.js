@@ -14,7 +14,9 @@ const Project = ({ title, children, screenshot, repoLink, siteLink, logos }) => 
           <ReactMarkdown>{ children }</ReactMarkdown>
         </div>
         <div className={s.project__links}>
-          <a className={s.project__link} href={ repoLink }><img src={githubLogo} className={s.project__githubLink} /></a>
+          <a className={s.project__link} href={ repoLink }>
+            <img src={githubLogo} className={s.project__githubLink} alt="Github logo" />
+          </a>
           <a className={s.project__link} href={ siteLink }>Перейти на сайт</a>
         </div>
       </div>
