@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  text-align: center;
+  color: white;
+  padding: 60px;
+  background: linear-gradient(90deg, $blue, $purple);
+  font-size: 18px;
+
+  &__logo {
+    height: 18px;
+  }
+}

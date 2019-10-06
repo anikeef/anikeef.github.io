@@ -3,6 +3,9 @@ import Layout from '../components/layout/Layout';
 import PageHeader from '../components/page-header/PageHeader';
 import Project from '../components/project/Project';
 import { graphql } from 'gatsby';
+import Footer from '../components/footer/Footer';
+import githubLogo from '../images/github-white.png';
+import footerStyles from '../components/footer/Footer.module.scss';
 
 const extractImgData = (mode, name, data) => {
   return data.allFile.nodes.find((node) => {
@@ -36,6 +39,9 @@ const Portfolio = ({ data }) => {
           );
         })
       }
+      <Footer>
+        Остальное на <a href="https://github.com/anikeef"><img src={githubLogo} className={footerStyles.footer__logo} alt="Github logo" /></a>
+      </Footer>
     </Layout>
   );
 }
