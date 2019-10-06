@@ -5,7 +5,6 @@ import Project from '../components/project/Project';
 import { graphql } from 'gatsby';
 
 const Portfolio = ({ data }) => {
-  console.log(data);
   return (
     <Layout>
       <PageHeader title='Портфолио' >
@@ -17,10 +16,13 @@ const Portfolio = ({ data }) => {
       { 
         data.allMarkdownRemark.nodes.map((node) => {
           const imgFluid = data.allFile.edges.find((edge) => {
-            return edge.node.childImageSharp.fluid.originalName === node.frontmatter.screenshotURI;
+            return edge.node.childImageSharp.fluid.originalName === node.frontmatter.screenshot;
           }).node.childImageSharp.fluid;
+          const logosFixed = data.allFile.edges.find((edge) => {
+            return edge.node.childImageSharp.fixed.originalName === node.frontmatter.logos;
+          }).node.childImageSharp.fixed;
           return (
-            <Project key={ node.id } title={ node.frontmatter.title } screenshot={ imgFluid }>
+            <Project key={ node.id } title={ node.frontmatter.title } screenshot={ imgFluid } logos={ logosFixed }>
               { node.rawMarkdownBody }
             </Project>
           );
@@ -39,7 +41,10 @@ export const query = graphql`
         id
         frontmatter {
           title
-          screenshotURI
+          screenshot
+          logos
+          repoLink
+          siteLink
         }
         rawMarkdownBody
       }
@@ -51,6 +56,10 @@ export const query = graphql`
             fluid(maxWidth: 1000) {
               originalName
               ...GatsbyImageSharpFluid
+            }
+            fixed(height: 35) {
+              originalName
+              ...GatsbyImageSharpFixed
             }
           }
         }

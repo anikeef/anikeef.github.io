@@ -1,7 +1,10 @@
 ---
 id: 1
 title: "Write"
-screenshotURI: "write.png"
+screenshot: "write.png"
+logos: "write-logos.png"
+repoLink: "https://github.com/anikeef/write"
+siteLink: "https://anikeef.github.io/write/about"
 ---
 Один из моих любимых проектов - онлайн-редактор Markdown с поддержкой TeX-уравнений и возможностью создания ссылок на документы. Приложение написано с помощью React и нескольких других крутых библиотек, так что самая сложная часть работы - парсинг кода и его конвертация в html - уже была сделана до меня. Мне осталось только реализовать основную логику и привести все к красивому виду. 
 

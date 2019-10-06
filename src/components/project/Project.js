@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import ReactMarkdown from 'react-markdown';
 import githubLogo from '../../images/github.png';
 
-const Project = ({ title, children, screenshot, repoLink, siteLink }) => {
+const Project = ({ title, children, screenshot, repoLink, siteLink, logos }) => {
   console.log(screenshot);
   return (
     <div className={s.project}>
@@ -22,7 +22,9 @@ const Project = ({ title, children, screenshot, repoLink, siteLink }) => {
         <div className={s.project__screenshot}>
           <Img fluid={ screenshot } alt="Gatsby Docs are awesome" />
         </div>
-        <img className={s.project__logos} src='/write-logos.png'></img>
+        <div className={s.project__logos}>
+          <Img fixed={ logos } alt="Gatsby Docs are awesome" />
+        </div>
       </div>
     </div>
   );
