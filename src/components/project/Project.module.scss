@@ -1,0 +1,52 @@
+.project {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+
+  &__content {
+    width: 40%;
+
+    p {
+      margin: 25px 0;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__presentation {
+    width: 50%;
+    margin-right: 80px;
+  }
+
+  &__screenshot {
+    box-shadow: 0px 0px 30px #E6EBEF;
+  }
+
+  &__links {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    margin-right: 50px;
+  }
+
+  &__githubLink {
+    height: 14px;
+  }
+
+  &__logos {
+    display: block;
+    margin: 40px auto;
+    height: 35px;
+  }
+}
